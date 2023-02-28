@@ -12,7 +12,6 @@ export const ContactList = () => {
   const dispatch = useDispatch();
 
   const handleClickDelete = id => {
-    console.log(id);
     dispatch(deleteContact(id));
   };
 
