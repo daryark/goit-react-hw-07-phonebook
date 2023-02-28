@@ -1,4 +1,3 @@
-// import { BallTriangle } from 'react-loader-spinner';
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
@@ -13,8 +12,3 @@ export const Wrapper = styled.div`
   align-items: center;
   background-color: rgba(14, 16, 21, 0.1);
 `;
-// export const LoaderBalls = styled(BallTriangle)`
-//   width: 100px;
-//   height: 100px;
-//   color: #4a7aff;
-// `;
