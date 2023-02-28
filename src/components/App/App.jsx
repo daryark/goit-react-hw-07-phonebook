@@ -38,7 +38,7 @@ export function App() {
               You don't have contacts yet, add somebody!
             </Notification>
           )}
-          {contacts.length && <ContactList />}
+          {Boolean(contacts.length) && <ContactList />}
         </Container>
       </Section>
       {loading && <Loader />}

@@ -10,6 +10,9 @@ const initialState = {
   filter: '',
 };
 
+const extraActions = [getContacts, addContact, deleteContact];
+const getActions = type => extraActions.map(action => action[type]);
+
 const contactsSlice = createSlice({
   name: 'contacts',
   initialState,
@@ -35,18 +38,8 @@ const contactsSlice = createSlice({
         state.contacts.isLoading = false;
       })
 
-      .addMatcher(
-        isAnyOf(getContacts.pending, addContact.pending, deleteContact.pending),
-        pendingHandler
-      )
-      .addMatcher(
-        isAnyOf(
-          getContacts.rejected,
-          addContact.rejected,
-          deleteContact.rejected
-        ),
-        rejectedHandler
-      );
+      .addMatcher(isAnyOf(...getActions('pending')), pendingHandler)
+      .addMatcher(isAnyOf(...getActions('rejected')), rejectedHandler);
   },
 });
 
