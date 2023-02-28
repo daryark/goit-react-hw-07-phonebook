@@ -33,13 +33,12 @@ export function App() {
           <Header2>Contacts</Header2>
           <Searchbar />
 
-          {!contacts.length ? (
+          {!contacts.length && !loading && (
             <Notification>
               You don't have contacts yet, add somebody!
             </Notification>
-          ) : (
-            <ContactList />
           )}
+          {contacts.length && <ContactList />}
         </Container>
       </Section>
       {loading && <Loader />}
