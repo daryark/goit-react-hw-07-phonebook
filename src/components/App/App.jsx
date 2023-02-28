@@ -8,20 +8,21 @@ import {
   Searchbar,
   Header,
 } from 'components';
+import { Loader } from 'components/common/Loader/Loader';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getContacts } from 'redux/contacts/operations';
-import { selectContacts } from 'redux/contacts/selectors';
+import { selectContacts, selectLoading } from 'redux/contacts/selectors';
 
 export function App() {
   const contacts = useSelector(selectContacts);
-  // const loading = useSelector(selectLoading);
+  const loading = useSelector(selectLoading);
   const dispatch = useDispatch();
+  console.log(loading);
 
   useEffect(() => {
     dispatch(getContacts());
   }, [dispatch]);
-
   return (
     <>
       <Header />
@@ -41,6 +42,7 @@ export function App() {
           )}
         </Container>
       </Section>
+      {loading && <Loader />}
     </>
   );
 }

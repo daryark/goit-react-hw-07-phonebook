@@ -34,22 +34,24 @@ export const ContactList = () => {
 
   const filtered = getFilteredContacts(contacts, filter);
   return (
-    <ul>
+    <>
       {Boolean(filtered.length) ? (
-        filtered.map(({ name, phone, id }) => (
-          <ContactItem key={id}>
-            <div>
-              <ContactInfo>{name}</ContactInfo>
-              <ContactInfo>{phone}</ContactInfo>
-            </div>
-            <DeleteBtn type="button" onClick={() => handleClickDelete(id)}>
-              <FaRegTrashAlt />
-            </DeleteBtn>
-          </ContactItem>
-        ))
+        <ul>
+          {filtered.map(({ name, phone, id }) => (
+            <ContactItem key={id}>
+              <div>
+                <ContactInfo>{name}</ContactInfo>
+                <ContactInfo>{phone}</ContactInfo>
+              </div>
+              <DeleteBtn type="button" onClick={() => handleClickDelete(id)}>
+                <FaRegTrashAlt />
+              </DeleteBtn>
+            </ContactItem>
+          ))}
+        </ul>
       ) : (
         <Notification>Sorry, no matches found</Notification>
       )}
-    </ul>
+    </>
   );
 };
